@@ -38,8 +38,13 @@ nav button:hover {
 
 form {
   max-width: 40%;
+  margin: 0 auto;
+}
+
+label {
+  display: flex;
   flex-direction: column;
-  margin-bottom: 1px;
+  margin-bottom: 1em;
 }
 
 label span {
@@ -75,7 +80,7 @@ textarea {
   border-radius: 0;
 }
 
-btn.btn-outline {
+.btn.btn-outline {
   background-color: transparent;
   border-radius: 0;
   color: #000;
@@ -83,20 +88,20 @@ btn.btn-outline {
   padding: 7px 30px;
 }
 
-btn::hover {
+.btn::hover {
   background-color: #0f730c;
   color: #fff;
 }
 
-btn.btn-outline:hover {
+.btn.btn-outline:hover {
   background-color: #000;
 }
 
-btn.btn-danger:hover {
+.btn.btn-danger:hover {
   background-color: #dc3545;
 }
 
-btn[disable] {
+.btn[disable] {
   background-color: #aaa;
 }
 
