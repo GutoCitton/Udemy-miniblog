@@ -34,6 +34,9 @@ export const useInsertDocument = (docCollection) => {
   }
 
   const insertDocument = async(document) => {
+    checkCancelBeforeDispatch({
+      type: 'LOADING',
+    })
 
     try {
 
@@ -45,14 +48,23 @@ export const useInsertDocument = (docCollection) => {
       )
 
       checkCancelBeforeDispatch({
-        type: '',
-        payload: insertedDocument
+        type: 'INSERTED_DOCUMENT',
+        payload: insertedDocument,
+      });
+
+    } catch (error) {
+      checkCancelBeforeDispatch({
+        type: 'ERROR',
+        payload: error.message,
       })
-
-    } catch {
-
     }
 
   }
+
+  useEffect(() => {
+   return () => setCancelled(true)
+  }, []);
+
+  return { insertDocument, response };
 
 }
