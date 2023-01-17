@@ -48,7 +48,7 @@ const CreatePost = () => {
       createdBy: user.displayName,
     });
 
-    if(formError) return
+    if (formError) return
 
     insertDocument({
       title,
