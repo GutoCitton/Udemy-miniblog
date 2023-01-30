@@ -28,9 +28,12 @@ const EditPost = () => {
       const textTags = post.tagsArray.join(', ')
 
       setTags(textTags);
+
+      console.log(post, 'Cheguei no useEffect')
     }
 
   }, [post]);
+  console.log(post, id, 'passei direto pelo useEffect')
 
   const { user } = useAuthValue();
 
