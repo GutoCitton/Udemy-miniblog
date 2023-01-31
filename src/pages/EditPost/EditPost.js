@@ -8,9 +8,11 @@ import { useFetchDocument } from '../../hooks/useFetchDocument'
 
 
 
+
 const EditPost = () => {
   const { id } = useParams();
   const { document: post } = useFetchDocument('posts', id);
+
 
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
@@ -18,7 +20,9 @@ const EditPost = () => {
   const [tags, setTags] = useState([]);
   const [formError, setFormError] = useState("");
 
+
   useEffect(() => {
+ 
 
     if (post) {
       setTitle(post.title)
@@ -34,6 +38,7 @@ const EditPost = () => {
 
   }, [post]);
   console.log(post, id, 'passei direto pelo useEffect')
+
 
   const { user } = useAuthValue();
 
@@ -62,6 +67,7 @@ const EditPost = () => {
 
     console.log(tagsArray);
 
+
     console.log({
       title,
       image,
@@ -73,6 +79,7 @@ const EditPost = () => {
 
     if (formError) return
 
+    
     insertDocument({
       title,
       image,
