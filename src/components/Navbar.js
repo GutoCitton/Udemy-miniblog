@@ -5,6 +5,12 @@ import { useAuthentication } from "../hooks/useAuthentication";
 import { useAuthValue } from "../context/AuthContext";
 
 import styles from './Navbar.module.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCloud } from '@fortawesome/free-solid-svg-icons'
+
+import CreatePost from "../pages/CreatePost/CreatePost";
+
+
 
 
 const Navbar = () => {
@@ -16,6 +22,7 @@ const Navbar = () => {
       <NavLink to='/' className={styles.brand}>
         Mini <span>Blog</span>
       </NavLink>
+      
       <ul className={styles.links_list}>
         <li>
           <NavLink to='/' className={({ isActive }) => (isActive ? styles.active : '')}>
@@ -39,8 +46,8 @@ const Navbar = () => {
         {user && (
           <>
             <li>
-              <NavLink to='/posts/create' className={({ isActive }) => (isActive ? styles.active : '')}>
-                Novo Post
+              <NavLink to='/posts/create' className={({ isActive }) => (isActive ? styles.active : '') } >
+                Novo Post <FontAwesomeIcon className={styles.cloudIcon} icon={faCloud}/>
               </NavLink>
             </li>
             <li>
