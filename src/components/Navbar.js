@@ -6,7 +6,7 @@ import { useAuthValue } from "../context/AuthContext";
 
 import styles from './Navbar.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCloud } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRightToBracket, faArrowUpRightFromSquare, faBlog, faCamera, faCircleInfo, faCloud, faHouseChimney, faInfo, faInfoCircle, faTableColumns, faTableList, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 
 import CreatePost from "../pages/CreatePost/CreatePost";
 
@@ -20,25 +20,25 @@ const Navbar = () => {
   return (
     <nav className={styles.navbar}>
       <NavLink to='/' className={styles.brand}>
-        Mini <span>Blog</span>
+        Mini <span>Blog</span> <FontAwesomeIcon className={styles.cloudIcon} icon={faBlog}/>
       </NavLink>
       
       <ul className={styles.links_list}>
         <li>
           <NavLink to='/' className={({ isActive }) => (isActive ? styles.active : '')}>
-            Home
+            Home <FontAwesomeIcon className={styles.cloudIcon} icon={faHouseChimney}/>
           </NavLink>
         </li>
         {!user && (
           <>
             <li>
               <NavLink to='/login' className={({ isActive }) => (isActive ? styles.active : '')}>
-                Entrar
+                Entrar <FontAwesomeIcon className={styles.cloudIcon} icon={faArrowUpRightFromSquare}/>
               </NavLink>
             </li>
             <li>
               <NavLink to='/register' className={({ isActive }) => (isActive ? styles.active : '')}>
-                Cadastrar
+                Cadastrar <FontAwesomeIcon className={styles.cloudIcon} icon={faUserPlus}/>
               </NavLink>
             </li>
           </>
@@ -47,24 +47,24 @@ const Navbar = () => {
           <>
             <li>
               <NavLink to='/posts/create' className={({ isActive }) => (isActive ? styles.active : '') } >
-                Novo Post <FontAwesomeIcon className={styles.cloudIcon} icon={faCloud}/>
+                Novo Post <FontAwesomeIcon className={styles.cloudIcon} icon={faCamera}/>
               </NavLink>
             </li>
             <li>
               <NavLink to='/dashboard' className={({ isActive }) => (isActive ? styles.active : '')}>
-                Dashboard
+                Dashboard <FontAwesomeIcon className={styles.cloudIcon} icon={faTableList}/>
               </NavLink>
             </li>
           </>
         )}
         <li>
           <NavLink to='/about' className={({ isActive }) => (isActive ? styles.active : '')}>
-            Sobre
+            Sobre <FontAwesomeIcon className={styles.cloudIcon} icon={faCircleInfo}/>
           </NavLink>
         </li>
         {user && (
           <li>
-            <button onClick={logout}>Sair</button>
+            <button onClick={logout}>Sair <FontAwesomeIcon className={styles.cloudIcon} icon={faArrowRightToBracket}/></button>
           </li>
         )}
       </ul>

@@ -12,20 +12,36 @@
   text-transform: uppercase;
 }
 
+.brand {
+  display: flex;
+}
+
+.brand .cloudIcon {
+  display: flex;
+  margin-left: 8px;
+  width: 15px;
+}
+
 .links_list {
   display: flex;
   list-style: none;
 }
 
-.links_list a {
+.links_list a, button {
+  display: flex;
   padding: .4em .6em;
+  align-items: center;
+  flex-direction: column-reverse;
+
 }
 
 .active {
   /* background-color: #000; */
-  color: #fff;
+  color: #7286D3;
 }
 
-.clooudIcon {
-  color: red;
+.cloudIcon {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2px;
 }

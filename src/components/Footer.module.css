@@ -4,5 +4,5 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #EDF3f6;
+  background-image: linear-gradient(to left, #93C6E7, #FEDEFF);
 }
