@@ -118,8 +118,9 @@ textarea {
 
 img {
   border-radius: 15px;
-  border: 2px solid rgb(0, 0, 0, .5);
   min-width: 500px;
+
+  box-shadow: -3px 3px 3px #003152;
 }
 
 

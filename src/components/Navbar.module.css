@@ -3,8 +3,12 @@
   box-shadow: rbba(0,0,0, .15) 0px -3px 10px 0px;
   justify-content: space-between;
   align-items: center;
-  padding: .5em 2em;
+  padding: .1em 2em;
+
+  border: 18px solid transparent;
   background-image: linear-gradient(to left, #93C6E7, #FEDEFF);
+  border-image: linear-gradient(to right, #93C6E7, #FEDEFF) ;
+  border-image-slice: 1;
 }
 
 .brand span {
