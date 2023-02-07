@@ -1,10 +1,10 @@
 import styles from "./EditPost.module.css";
 
 import { useState, useEffect } from "react";
-import { useInsertDocument } from "../../hooks/useInsertDocument";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuthValue } from "../../context/AuthContext";
 import { useFetchDocument } from '../../hooks/useFetchDocument'
+import { useUpdateDocument } from "../../hooks/useUpdateDocument";
 
 
 
@@ -26,13 +26,11 @@ const EditPost = () => {
  
 
     if (post) {
-      console.log(post, 'Cheguei no useEffect')
       setTitle(post.title)
       setBody(post.body)
       setImage(post.image)
 
       const textTags = post.tags.join(', ')
-      console.log(post, 'tags')
 
       setTags(textTags);
 
@@ -41,14 +39,13 @@ const EditPost = () => {
 
   }, [post]);
   
-  console.log(post, idTeste, 'passei direto pelo useEffect')
 
 
   const { user } = useAuthValue();
 
   const navigate = useNavigate();
 
-  const { insertDocument, response } = useInsertDocument("posts");
+  const { updateDocument, response } = useUpdateDocument("posts");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -69,7 +66,6 @@ const EditPost = () => {
       setFormError("Por favor, preencha todos os campos!");
     }
 
-    console.log(tagsArray);
 
 
     console.log({
@@ -83,18 +79,18 @@ const EditPost = () => {
 
     if (formError) return
 
-    
-    insertDocument({
+    const data = {
       title,
       image,
       body,
       tags: tagsArray,
       uid: user.uid,
       createdBy: user.displayName,
-    });
+    }
+    updateDocument(id, data);
 
     // redirect to home page
-    navigate("/");
+    navigate("/dashboard");
   };
 
   return (
@@ -165,10 +161,6 @@ const EditPost = () => {
 
 
 export default EditPost;
-
-
-
-
 
 
 
