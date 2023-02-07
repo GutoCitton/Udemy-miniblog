@@ -11,7 +11,8 @@ import { useFetchDocument } from '../../hooks/useFetchDocument'
 
 const EditPost = () => {
   const { id } = useParams();
-  const { document: post } = useFetchDocument('posts', id);
+  const idTeste = id.slice(1);
+  const { document: post } = useFetchDocument('posts', idTeste);
 
 
   const [title, setTitle] = useState("");
@@ -25,19 +26,22 @@ const EditPost = () => {
  
 
     if (post) {
+      console.log(post, 'Cheguei no useEffect')
       setTitle(post.title)
       setBody(post.body)
       setImage(post.image)
 
-      const textTags = post.tagsArray.join(', ')
+      const textTags = post.tags.join(', ')
+      console.log(post, 'tags')
 
       setTags(textTags);
 
-      console.log(post, 'Cheguei no useEffect')
+
     }
 
   }, [post]);
-  console.log(post, id, 'passei direto pelo useEffect')
+  
+  console.log(post, idTeste, 'passei direto pelo useEffect')
 
 
   const { user } = useAuthValue();
