@@ -24,6 +24,7 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import Search from './pages/Search/Search'
 import Post from './pages/Post/Post';
 import EditPost from './pages/EditPost/EditPost'
+import AnimCursor from './components/AnimCursor';
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
 
   return (
     <div className="App">
+      <AnimCursor />
       <AuthProvider value={{ user }}>
         <BrowserRouter>
         <Navbar />
