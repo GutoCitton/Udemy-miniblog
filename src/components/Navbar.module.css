@@ -1,13 +1,15 @@
 .navbar {
   display: flex;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px -2px 10px 0px;
+  box-shadow: rbba(0,0,0, .15) 0px -3px 10px 0px;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5em 2em;
-}
+  padding: .1em 2em;
 
-.brand {
-  font-size: 1.2em;
+  border: 18px solid transparent;
+  background-image: linear-gradient(to left, #93C6E7, #FEDEFF);
+  border-image: linear-gradient(to right, #93C6E7, #FEDEFF) ;
+  border-image-slice: 1;
+
 }
 
 .brand span {
@@ -15,20 +17,36 @@
   text-transform: uppercase;
 }
 
+.brand {
+  display: flex;
+}
+
+.brand .cloudIcon {
+  display: flex;
+  margin-left: 8px;
+  width: 15px;
+}
+
 .links_list {
   display: flex;
   list-style: none;
 }
 
-.links_list li {
-  margin-right: 1em;
-}
+.links_list a, button {
+  display: flex;
+  padding: .4em .6em;
+  align-items: center;
+  flex-direction: column-reverse;
 
-.links_list li a {
-  padding: 0.4em 0.6em;
 }
 
 .active {
-  background-color: #000;
-  color: #fff;
+  /* background-color: #000; */
+  color: #7286D3;
+}
+
+.cloudIcon {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2px;
 }
