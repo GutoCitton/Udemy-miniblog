@@ -3,7 +3,7 @@ import styles from "./CreatePost.module.css";
 import { useState } from "react";
 import { useInsertDocument } from "../../hooks/useInsertDocument";
 import { useNavigate } from "react-router-dom";
-import { useAuthValue } from "../../context/AuthContext";
+import { useAuthValue } from "../../contexts/AuthContext";
 
 const CreatePost = () => {
   const [title, setTitle] = useState("");
@@ -48,7 +48,7 @@ const CreatePost = () => {
       createdBy: user.displayName,
     });
 
-    if (formError) return
+    if(formError) return
 
     insertDocument({
       title,
@@ -124,6 +124,5 @@ const CreatePost = () => {
     </div>
   );
 };
-
 
 export default CreatePost;

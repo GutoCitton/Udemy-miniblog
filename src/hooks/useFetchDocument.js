@@ -3,46 +3,31 @@ import { db } from "../firebase/config";
 import { doc, getDoc } from "firebase/firestore";
 
 export const useFetchDocument = (docCollection, id) => {
-
   const [document, setDocument] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(null);
 
-  // deal with memory leak
-  const [cancelled, setCancelled] = useState(false);
-
   useEffect(() => {
-
-    async function loadDocument() {
-      if(cancelled) return
-
+    const loadDocument = async () => {
       setLoading(true);
-      
+
       try {
+        const docRef = await doc(db, docCollection, id);
+        const docSnap = await getDoc(docRef);
 
-        const docRef = await doc(db, docCollection, id)
-        const docSnap = await getDoc(docRef)
-
-        console.log(docSnap.data())
-
-        setDocument(docSnap.data())
-
-        setLoading(false);
+        setDocument(docSnap.data());
       } catch (error) {
-        console.log(error)
-        setError(error.message)
-
-        setLoading(true);
+        console.log(error);
+        setError(error.message);
       }
-    }
+
+      setLoading(false);
+    };
 
     loadDocument();
-  }, [docCollection, id, cancelled]);
+  }, [docCollection, id]);
 
-  useEffect(() => {
-    return () => setCancelled(true); 
-  }, []);
+  console.log(document);
 
   return { document, loading, error };
-  
 };
